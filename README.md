@@ -15,6 +15,9 @@ Momentan enthalten:
 - [X] Editieren der Veranstaltungen
 - [ ] Mehrtägige veranstaltungen
 
+![Kalender](https://raw.githubusercontent.com/eaCe/rex_calendar/assets/calendar.jpg)
+![Eintrag](https://raw.githubusercontent.com/eaCe/rex_calendar/assets/edit.jpg)
+
 Nuzung im Frontend - Im Modul folgende Zeile einbinden:
 
 ```php
