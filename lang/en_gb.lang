@@ -1,0 +1,9 @@
+title = Calendar
+rex_ec_title = Calendar
+rex_ec_settings = Settings
+rex_ec_category = Category
+rex_ec_settings_categories = Categories
+rex_ec_settings_save = Save settings
+rex_ec_settings_saved = Settings saved
+rex_ec_settings_markitup = Use Markitup
+rex_ec_settings_missing_profile = Profile "calender" for Markitup is missing

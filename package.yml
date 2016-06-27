@@ -1,0 +1,12 @@
+package: rex_calendar
+version: '0.1'
+author: eaCe
+supportpage: /
+compile: 1
+
+page:
+  title: 'translate:rex_ec_title'
+  icon: rex-icon fa-calendar
+  subpages:
+      calendar: { title: 'translate:rex_ec_title',perm: rex_calendar[] }
+      settings: { title: 'translate:rex_ec_settings',perm: rex_calendar[] }

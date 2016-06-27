@@ -1,0 +1,9 @@
+title = Kalender
+rex_ec_title = Kalender
+rex_ec_settings = Einstellungen
+rex_ec_category = Kategorie
+rex_ec_settings_categories = Kategorien
+rex_ec_settings_save = Einstellungen speichern
+rex_ec_settings_saved = Änderung gespeichert
+rex_ec_settings_markitup = Markitup nutzen
+rex_ec_settings_missing_profile = Das Profil "calender" für Markitup fehlt
