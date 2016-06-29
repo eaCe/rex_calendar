@@ -48,6 +48,17 @@
         background-color: #324050;
         color: white;
         text-align: center;
+        
+        &.sat
+        {
+            background-color: #FFAB91;
+        }
+
+        &.sun
+        {
+            background-color: #EF9A9A;
+        }
+
     }
     
     td
