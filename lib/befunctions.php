@@ -201,7 +201,9 @@ function showMonth($month = null, $year = null, $daysArray)
     $date = mktime(12, 0, 0, $month, 1, $year);
 
     $daysInMonth = date("t", $date);
-    $offset = date("w", $date);
+    $offset = date("w", $date) - 1;
+    
+    var_dump($offset);
     $rows = 1;
     $prev_month = $month - 1;
     $prev_year = $year;
@@ -221,7 +223,7 @@ function showMonth($month = null, $year = null, $daysArray)
     $calendar .= "<div class='panel-heading text-center'><div class='row'><div class='col-md-3 col-xs-4'><a class='ajax-navigation btn btn-default btn-sm' href='" . rex_url::currentBackendPage() . "&month=" . $prev_month . "&year=" . $prev_year . "'><i class='fa fa-arrow-left' aria-hidden='true'></i></a></div><div class='col-md-6 col-xs-4'><strong><h3>" . strftime("%B %Y", $date) . "</h3></strong></div>";
     $calendar .= "<div class='col-md-3 col-xs-4 '><a class='ajax-navigation btn btn-default btn-sm' href='" . rex_url::currentBackendPage() . "&month=" . $next_month . "&year=" . $next_year . "'><i class='fa fa-arrow-right' aria-hidden='true'></i></a></div></div></div>";
     $calendar .= "<table class='table table-bordered'>";
-    $calendar .= "<tr><th>" . getDayName(7) . "</th><th>" . getDayName(1) . "</th><th>" . getDayName(2) . "</th><th>" . getDayName(3) . "</th><th>" . getDayName(4) . "</th><th>" . getDayName(5) . "</th><th>" . getDayName(6) . "</th></tr>";
+    $calendar .= "<tr><th>" . getDayName(1) . "</th><th>" . getDayName(2) . "</th><th>" . getDayName(3) . "</th><th>" . getDayName(4) . "</th><th>" . getDayName(5) . "</th><th>" . getDayName(6) . "</th><th>" . getDayName(7) . "</th></tr>";
     $calendar .= "<tr>";
     for ($i = 1; $i <= $offset; $i++)
     {
