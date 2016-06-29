@@ -203,7 +203,6 @@ function showMonth($month = null, $year = null, $daysArray)
     $daysInMonth = date("t", $date);
     $offset = date("w", $date) - 1;
     
-    var_dump($offset);
     $rows = 1;
     $prev_month = $month - 1;
     $prev_year = $year;
