@@ -42,6 +42,16 @@ $daysArray = array_flip($selectedDays);
     <div>
         <div class="label label-primary">Schnellnavigation</div><br>
         <div class="btn-group" role="group" aria-label="">
+            <?php            
+            if(($viewdMonth . "." . $viewdYear) !== (date('n') . "." . date('Y')))
+            {
+            ?>
+            <div class="btn-group" role="group">
+                <a href="<?= rex_url::currentBackendPage() ?>&month=<?= date('n') ?>&year=<?= date('Y') ?>" class="btn btn-default">Gehe zu Heute</a>
+            </div>
+            <?php    
+            }
+            ?>
             <div class="btn-group" role="group">
                 <button class="btn btn-default dropdown-toggle" type="button" id="monthDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Monat: <?= getMonthName($viewdMonth) ?>
