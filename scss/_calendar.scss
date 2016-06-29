@@ -151,6 +151,17 @@
             }
         }
         
+        &.sat
+        {
+            color: #FFAB91;
+        }
+        
+        &.sun
+        {
+            color: #EF9A9A;
+        }
+        
+        
         &:hover
         {
             background-color: rgba(gray, 0.2);

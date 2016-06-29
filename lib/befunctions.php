@@ -229,11 +229,13 @@ function showMonth($month = null, $year = null, $daysArray)
         $calendar .= "<td></td>";
     }
     for ($day = 1; $day <= $daysInMonth; $day++)
-    {
+    {       
         $theDay = $year . "-" . intval($month) . "-" . intval($day);
         $hasEventClass = "";
         $hasEvent = false;
         $isTodayClass = "";
+        $isSatClass = (($day + $offset + 1) % 7) ? "" : " sat";
+        $isSunClass = (($day + $offset) % 7) ? "" : " sun";
 
         if (($day + $offset - 1) % 7 == 0 && $day != 1)
         {
@@ -266,7 +268,7 @@ function showMonth($month = null, $year = null, $daysArray)
         if ($eventsThisDay === 1)
         {
             $editEventClass = "edit";
-            $calendar .= "<td class='" . $hasEventClass . $isTodayClass . " edit-event' " . getDataSet($eventArray[0]) . ">";
+            $calendar .= "<td class='" . $hasEventClass . $isTodayClass . $isSunClass . $isSatClass ." edit-event' " . getDataSet($eventArray[0]) . ">";
         }
         elseif ($eventsThisDay > 1)
         {
@@ -284,11 +286,11 @@ function showMonth($month = null, $year = null, $daysArray)
                 $popOverContent .= '</div>';
             }
 
-            $calendar .= "<td class='" . $hasEventClass . $isTodayClass . " pop' data-selector='form' data-toggle='popover' data-content='" . $popOverContent . "' data-html='true' data-trigger='click' data-placement='top'>";
+            $calendar .= "<td class='" . $hasEventClass . $isTodayClass . $isSunClass . $isSatClass . " pop' data-selector='form' data-toggle='popover' data-content='" . $popOverContent . "' data-html='true' data-trigger='click' data-placement='top'>";
         }
         else
         {
-            $calendar .= "<td class='" . $hasEventClass . $isTodayClass . "'>";
+            $calendar .= "<td class='" . $hasEventClass . $isTodayClass . $isSunClass . $isSatClass . "'>";
         }
         $calendar .= "<form action='" . rex_url::currentBackendPage() . "&month=" . intval($month) . "&year=" . $year . "'>";
         $calendar .= $day;
@@ -296,6 +298,7 @@ function showMonth($month = null, $year = null, $daysArray)
         $calendar .= "<input type='hidden' name='month' value='" . intval($month) . "'>";
         $calendar .= "<input type='hidden' name='year' value='" . $year . "'>";
         $calendar .= "<input type='hidden' name='full-date' value='" . utf8_encode(strftime("%A %d. %B %Y", strtotime($theDay))) . "'>";
+        
         if ($hasEvent)
         {
             $calendar .= "<i class='fa fa-edit " . $editEventClass . "' aria-hidden='true'></i>";
