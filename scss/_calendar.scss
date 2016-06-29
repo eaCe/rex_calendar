@@ -35,6 +35,7 @@
             top: -2px;
             background-color: #3CB594;
             z-index: 5;
+            padding: 0;
         }
     }
     
@@ -77,6 +78,21 @@
         -o-transition-timing-function: ease-in-out;
         -webkit-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;
+        
+        .mobile
+        {
+            display: none;
+        }
+        
+        @media only screen and (max-width: 767px)
+        {
+            padding: 8px;
+        
+            .mobile
+            {
+                display: inline;
+            }
+        }
         
         .add
         {

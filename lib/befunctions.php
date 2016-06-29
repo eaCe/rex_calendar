@@ -236,7 +236,8 @@ function showMonth($month = null, $year = null, $daysArray)
         $isTodayClass = "";
         $isSatClass = (($day + $offset + 1) % 7) ? "" : " sat";
         $isSunClass = (($day + $offset) % 7) ? "" : " sun";
-
+        $currentDay = (($day + $offset) % 7);
+        
         if (($day + $offset - 1) % 7 == 0 && $day != 1)
         {
             $calendar .= "</tr><tr>";
@@ -293,12 +294,14 @@ function showMonth($month = null, $year = null, $daysArray)
             $calendar .= "<td class='" . $hasEventClass . $isTodayClass . $isSunClass . $isSatClass . "'>";
         }
         $calendar .= "<form action='" . rex_url::currentBackendPage() . "&month=" . intval($month) . "&year=" . $year . "'>";
+        $calendar .= "<span class='mobile'>";
+        $calendar .= ($currentDay === 0) ? getDayName(7) : getDayName($currentDay);
+        $calendar .= "</span> ";
         $calendar .= $day;
         $calendar .= "<input type='hidden' name='day' value='" . intval($day) . "'>";
         $calendar .= "<input type='hidden' name='month' value='" . intval($month) . "'>";
         $calendar .= "<input type='hidden' name='year' value='" . $year . "'>";
         $calendar .= "<input type='hidden' name='full-date' value='" . utf8_encode(strftime("%A %d. %B %Y", strtotime($theDay))) . "'>";
-        
         if ($hasEvent)
         {
             $calendar .= "<i class='fa fa-edit " . $editEventClass . "' aria-hidden='true'></i>";
