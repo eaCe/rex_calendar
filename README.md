@@ -14,6 +14,10 @@ Momentan enthalten:
 - [x] Ausgabe im Frontend
 - [X] Editieren der Veranstaltungen
 - [ ] Mehrtägige veranstaltungen
+- [ ] iCal Export
+- [ ] iCal Import
+- [ ] Jahresübersicht
+- [ ] Listenansicht
 
 ![Kalender](https://raw.githubusercontent.com/eaCe/rex_calendar/assets/calendar.jpg)
 ![Eintrag](https://raw.githubusercontent.com/eaCe/rex_calendar/assets/edit.jpg)
@@ -24,20 +28,54 @@ Nuzung im Frontend - Im Modul folgende Zeile einbinden:
 require_once( rex_path::addon('rex_calendar', 'lib/fefunctions.php') );
 ```
 
-Funkionen im Frontend:
+## Funkionen im Frontend:
 
 ```php
-getEventById($id); //gibt ein array zurück
-getEventsByMonth($month = false, $year = false, $limit = false); //gibt ein array zurück
-getEventsByYear($year = false, $limit = false); //gibt ein array zurück
-getEventsByDay($day, $month, $year); //gibt ein array zurück
-getNextEvents($day = false, $month = false, $year = false, $limit = false); //gibt ein array zurück
-getImageById($id, $mediaPath = false, $setTitle = false); //gibt img tag zurück
-getEvenByCategory($category, $day = false, $month = false, $year = false, $limit = false); //gibt ein array zurück
+getEventById($id); 
+//gibt ein array zurück
+//ID wird benötigt
+```
+
+```php
+getEventsByMonth($month = false, $year = false, $limit = false); 
+//gibt ein array zurück
+//sofern keine Parameter übergeben werden, wird der aktuelle Monat benutzt, alle vorhandenen Einträge werden ausgegeben
+```
+
+```php
+getEventsByYear($year = false, $limit = false); 
+//gibt ein array zurück
+//sofern keine Parameter übergeben werden, wird das aktuelle Jahr benutzt, alle vorhandenen Einträge werden ausgegeben
+```
+
+```php
+getEventsByDay($day, $month, $year); 
+//gibt ein array zurück
+//Tag, Monat und Jahr werden benötigt
+```
+```php
+getNextEvents($day = false, $month = false, $year = false, $limit = false); 
+//gibt ein array zurück
+//sofern keine Parameter übergeben werden, wird das aktuelle Datum benutzt, alle vorhandenen Einträge werden ausgegeben
+```
+
+```php
+getImageById($id, $mediaPath = false, $setTitle = false); 
+//gibt ein img tag zurück
+//ID wird benötigt
+//wenn nicht angegeben ist $mediaPath = 'media/';
+//wenn $setTitle wird ein title-Attribut mit asugegeben;
+```
+
+```php
+getEvenByCategory($category, $day = false, $month = false, $year = false, $limit = false); 
+//gibt ein array zurück
+//Kategorie als string wird benötigt (wie in den Einstellungen eingegeben)
+//wenn keine weiteren Parameter übergeben werden beginnt die Ausgabe ab dem aktuellem Datum
 ```
 
 
-Beispiel Output im Modul:
+### Beispiel Output im Modul:
 
 ```php
 <?php
@@ -48,7 +86,7 @@ $myEvent = getEventById(8);
 var_dump($myEvent);
 ```
 
-Das Ergebnis wäre dann:
+### Das Ergebnis wäre dann:
 ```php
 array (size=13)
   'id' => string '8' (length=1)
