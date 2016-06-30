@@ -28,7 +28,7 @@ Nuzung im Frontend - Im Modul folgende Zeile einbinden:
 require_once( rex_path::addon('rex_calendar', 'lib/fefunctions.php') );
 ```
 
-## Funkionen im Frontend:
+## Funtkionen im Frontend:
 
 ```php
 getEventById($id); 
