@@ -188,6 +188,19 @@ $daysArray = array_flip($selectedDays);
                                 </div>
                             </dd>
                         </dl>
+                        <dl class="rex-form-group form-group">
+                            <dt>
+                                <label class="control-label" for="rex_event_calendar_edit_link">Link</label>
+                            </dt>
+                            <dd>
+                                <div class="input-group">
+                                    <input class="form-control" name="link" value="" id="rex_event_calendar_edit_link" type="text" />
+                                    <span class="input-group-btn">
+                                        <a href="#" class="btn btn-popup select-link" data-input="rex_event_calendar_edit_link" title="Link"><i class='fa fa-link' aria-hidden='true'></i></a>
+                                    </span>
+                                </div>
+                            </dd>
+                        </dl>
                         <?= getCategories() ?>
                     </fieldset>
                 </form>
@@ -285,6 +298,19 @@ $daysArray = array_flip($selectedDays);
                                     <input class="form-control" name="image" value="" id="rex-event-calendar-add-image" readonly="readonly" type="text" />
                                     <span class="input-group-btn">
                                         <a href="#" class="btn btn-popup select-media" data-input="rex-event-calendar-add-image" title="Bild auswählen"><i class='fa fa-image' aria-hidden='true'></i></a>
+                                    </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="rex-form-group form-group">
+                            <dt>
+                                <label class="control-label" for="rex_event_calendar_add_link">Link</label>
+                            </dt>
+                            <dd>
+                                <div class="input-group">
+                                    <input class="form-control" name="link" value="" id="rex_event_calendar_add_link" type="text" />
+                                    <span class="input-group-btn">
+                                        <a href="#" class="btn btn-popup select-link" data-input="rex_event_calendar_add_link" title="Link"><i class='fa fa-link' aria-hidden='true'></i></a>
                                     </span>
                                 </div>
                             </dd>

@@ -11,5 +11,6 @@ CREATE TABLE IF NOT EXISTS `%TABLE_PREFIX%event_calendar` (
   `description` mediumtext NOT NULL,
   `image` text NOT NULL,
   `category` text NOT NULL,
+  `link` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

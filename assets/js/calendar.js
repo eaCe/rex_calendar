@@ -10,6 +10,7 @@ redaxo.Calendar = redaxo.Calendar || (function (jQuery)
         var jAddEntryTrigger = jCalendar.find(".add");
         var jEditEntryTrigger = jCalendar.find(".edit");
         var jSelectMedia = jQuery(".select-media");
+        var jSelectLink = jQuery(".select-link");
         var jShowTimepicker = jQuery(".show-timepicker");
         var jPopoverEdit = jQuery('.popover-edit');
 
@@ -20,6 +21,7 @@ redaxo.Calendar = redaxo.Calendar || (function (jQuery)
             jAddEntryTrigger: jAddEntryTrigger,
             jEditEntryTrigger: jEditEntryTrigger,
             jSelectMedia: jSelectMedia,
+            jSelectLink: jSelectLink,
             jShowTimepicker: jShowTimepicker,
             jPopoverEdit: jPopoverEdit
         });
@@ -321,6 +323,22 @@ redaxo.Calendar = redaxo.Calendar || (function (jQuery)
 
         openMediaPool(input);
     };
+    
+    var selectLinkHandler = function selectLinkHandler()
+    {
+        var jThis = jQuery(this);
+        var input = jThis.data("input");
+        var jInput = jQuery("#" + input);
+        var linkMap = openLinkMap();
+        
+        jQuery(linkMap).on('rex:selectLink', function (event, linkurl, linktext)
+        {
+            event.preventDefault();
+            
+            jInput.val(linkurl);
+            linkMap.close();
+        });
+    };
 
     var showTimepickerHandler = function showTimepickerHandler()
     {
@@ -335,6 +353,7 @@ redaxo.Calendar = redaxo.Calendar || (function (jQuery)
     {
         this.jAddEntryTrigger.on("click", addEntryHandler);
         this.jSelectMedia.on("click", selectMediaHandler);
+        this.jSelectLink.on("click", selectLinkHandler);
         this.jShowTimepicker.on("click", showTimepickerHandler);
         this.jPopoverEdit.on("click", popoverEditHandler);
         this.jEditEntryTrigger.on("click", function (event)

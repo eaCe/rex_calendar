@@ -19,6 +19,7 @@ if (rex_post('addevent') == "true")
     $sql_add->setValue('image', rex_post('image'));
     $sql_add->setValue('description', nl2br(rex_post('description')));
     $sql_add->setValue('category', rex_post('category'));
+    $sql_add->setValue('link', rex_post('link'));
 
     if ($sql_add->insert())
     {
@@ -51,6 +52,7 @@ if (rex_post('editevent') == "true")
     $sql_edit->setValue('image', rex_post('image'));
     $sql_edit->setValue('description', nl2br(rex_post('description')));
     $sql_edit->setValue('category', rex_post('category'));
+    $sql_edit->setValue('link', rex_post('link'));
     $sql_edit->setWhere('id=' . rex_post('id'));
 
     if ($sql_edit->update())
@@ -138,6 +140,7 @@ function getDataSet($eventThisDay)
     $content .= 'data-description="' . $eventThisDay["description"] . '"';
     $content .= 'data-image="' . $eventThisDay["image"] . '"';
     $content .= 'data-category="' . $eventThisDay["category"] . '"';
+    $content .= 'data-link="' . $eventThisDay["link"] . '"';
 
     return $content;
 }
