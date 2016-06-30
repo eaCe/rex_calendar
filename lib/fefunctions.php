@@ -1,4 +1,50 @@
 <?php
+//ical export
+if (rex_get('ical') !== "")
+{
+    if(is_numeric(rex_get('ical')))
+    {
+        $eventArray = getEventById(rex_get('ical'));
+        
+        if($eventArray)
+        {
+            getiCal($eventArray[0]);
+        }
+    }
+}
+
+function getiCal($eventArray)
+{
+    function dateToCal($timestamp)
+    {
+        return date('Ymd\THis\Z', $timestamp);
+    }
+
+    function escapeString($string)
+    {
+        return preg_replace('/([\,;])/', '\\\$1', $string);
+    }  
+    
+    $iCalContent = "";
+
+    $iCalContent .= "BEGIN:VCALENDAR";
+    $iCalContent .= "VERSION:2.0";
+    $iCalContent .= "PRODID:-//Kalender Export//NONSGML//DE";
+    $iCalContent .= "CALSCALE:GREGORIAN";
+    
+    //begin event
+    $iCalContent .= "BEGIN:VEVENT";
+    $iCalContent .= "SUMMARY:" . escapeString($eventArray["title"]);
+    $iCalContent .= "DESCRIPTION:";
+    $iCalContent .= "DTSTART:";
+    $iCalContent .= "UID:" . uniqid();
+    $iCalContent .= "DTSTAMP:";
+    $iCalContent .= "DTEND:";
+    $iCalContent .= "URL:" . rex::getServer();
+    $iCalContent .= "END:VEVENT";
+
+    $iCalContent .= "END:VCALENDAR";
+}
 
 
 function getEventsByMonth($month = false, $year = false, $limit = false)
@@ -119,6 +165,16 @@ function getImageById($id, $mediaPath = false, $setTitle = false)
 
 }
 
+function getEventById($id)
+{
+    $sql_eventbyid = rex_sql::factory();
+    $sql_eventbyid->setTable('rex_event_calendar');
+    $sql_eventbyid->setWhere(array('id' => $id));
+    $sql_eventbyid->select('*');
+    $event = $sql_eventbyid->getArray();
+    
+    return $event[0];
+}
 
 function getEvenByCategory($category, $day = false, $month = false, $year = false, $limit = false)
 {
