@@ -103,3 +103,7 @@ array (size=13)
   'category' => string 'cocktail' (length=8)
   'link' => string '/rex5/' (length=10)
 ```
+
+## Lizenz
+
+rex_calendar ist unter der [MIT Lizenz](LICENSE.md) lizensiert.
