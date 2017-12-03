@@ -1,3 +1,7 @@
+# Dieses Addon wird nicht mehr weiterentwickelt! Ein umfangreiches Kalender-Addon für R5 findet ihr hier: [sked](https://github.com/FriendsOfREDAXO/sked)
+
+---
+
 Redaxo 5 Addon - Kalender
 =================================
 
